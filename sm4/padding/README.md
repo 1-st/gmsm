@@ -68,7 +68,7 @@ func main() {
     cipherReader := bytes.NewReader(ciphertext)
     decrypter := cipher.NewCBCDecrypter(block, iv)
     decOut := bytes.NewBuffer(make([]byte, 0, 1024))
-    err = padding.P7BlockDecrypt(decrypter, ciphertext, decOut)
+    err = padding.P7BlockDecrypt(decrypter, cipherReader, decOut)
     if err != nil {
         panic(err)
     }
